@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* Mealix Brand Colors */
+  --c-primary: #1E50FF;
+  --c-primary-light: #5A7FFF;
+  --c-primary-glow: rgba(30, 80, 255, 0.25);
+
+  --c-secondary: #FF9500;
+  /* Apple-style Orange */
+  --c-secondary-light: #FFB340;
+  --c-secondary-glow: rgba(255, 149, 0, 0.25);
+
+  --c-success: #34C759;
+  --c-warning: #FF9500;
+  --c-error: #FF3B30;
+
+  /* Macro Specific Colors */
+  --c-protein: #FF2D55;
+  --c-fat: #FFBC00;
+  --c-carbs: #007AFF;
+
+  /* Surface variables */
+  --bg-main: #F4F7FC;
+  --bg-card: #FFFFFF;
+  --bg-input: #EDF1F7;
+
+  --text-main: #101426;
+  --text-muted: #8F9BB3;
+  --border-color: #E4E9F2;
+
+  /* Layout variables - AAA Standards */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+  --radius-xl: 40px;
+  --radius-pill: 100px;
+
+  /* Animations */
+  --spring-easing: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  --transition-fast: 0.2s var(--spring-easing);
+  --transition-normal: 0.4s var(--spring-easing);
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(16, 20, 38, 0.04);
+  --shadow-md: 0 10px 30px rgba(16, 20, 38, 0.08);
+  --shadow-lg: 0 16px 40px rgba(16, 20, 38, 0.12);
+  --shadow-btn-primary: 0 12px 24px rgba(30, 80, 255, 0.3);
+}
+
+/* Floating Navigation - Pill Style */
+.bottom-nav-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 48px);
+  max-width: 420px;
+  height: 72px;
+  background: rgba(16, 20, 38, 0.9);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-pill);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 12px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+.nav-item {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: #8E8E93;
+  transition: all 0.3s var(--spring-easing);
+  text-decoration: none;
+}
+
+.nav-item.active {
+  background: var(--c-primary);
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(30, 80, 255, 0.4);
+}
+
+.nav-item span {
+  display: none;
+}
+
+/* Capsule Trackers */
+.capsule-tracker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.capsule-bar {
+  width: 44px;
+  height: 120px;
+  background: var(--bg-input);
+  border-radius: var(--radius-pill);
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.capsule-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to top, var(--c-primary), var(--c-primary-light));
+  border-radius: var(--radius-pill);
+  transition: height 1s var(--spring-easing);
+}
+
+.capsule-value {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+}
+
+.capsule-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.5;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Utility */
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 800;
+  /* Extra bold para headers */
+  color: var(--text-main);
+  letter-spacing: -0.03em;
+  /* Tighter tracking looks premium */
+  line-height: 1.2;
+}
+
+p {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* Gradients */
+.text-gradient {
+  background: linear-gradient(135deg, var(--c-primary), #8A2BE2);
+  /* Azul a Violeta */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, var(--c-warning), var(--c-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass/Card Utilities (AAA feel) */
+.app-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-lg);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  /* Subtle white inner border for glass effect */
+  position: relative;
+  overflow: hidden;
+}
+
+.app-card:active {
+  transform: scale(0.98);
+  /* Tap state spring response */
+}
+
+/* Inputs & Buttons (Premium bulky look) */
+button {
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--c-primary), var(--c-primary-light));
+  color: #fff;
+  padding: 18px 24px;
+  /* Taller buttons */
+  font-size: 1.15rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-btn-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.btn-primary:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 12px var(--c-primary-glow);
+}
+
+.btn-secondary {
+  background: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  padding: 12px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-secondary.active {
+  background: var(--text-main);
+  color: white;
+  border-color: var(--text-main);
+}
+
+.btn-secondary:active,
+.btn-secondary.active:active {
+  transform: scale(0.95);
+}
+
+/* Forms */
+.input-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.input-field {
+  width: 100%;
+  padding: 18px;
+  background: var(--bg-input);
+  border: 2px solid transparent;
+  /* Ready for focus border */
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.input-field::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.input-field:focus {
+  outline: none;
+  background: var(--bg-card);
+  border-color: var(--c-primary);
+  box-shadow: 0 0 0 4px var(--c-primary-glow);
+  /* Outer glow on focus */
+}
+
+/* Animations */
+@keyframes springUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: springUp 0.6s var(--spring-easing) forwards;
+}

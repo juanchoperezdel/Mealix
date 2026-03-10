@@ -1,0 +1,314 @@
+.scanner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    color: white;
+}
+
+.scanner-viewfinder {
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.scanner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 16px;
+    z-index: 10;
+}
+
+.scanner-close-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+}
+
+.scanner-title {
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* The space where the "camera" points */
+.camera-area {
+    flex: 1;
+    position: relative;
+    margin: 20px;
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.5s ease;
+}
+
+.camera-area.is-scanning {
+    box-shadow: inset 0 0 40px rgba(0, 255, 170, 0.2);
+}
+
+.camera-feed-mock {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, #1a1a2e 0%, #000 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 6rem;
+    filter: blur(2px) grayscale(0.5);
+    transition: all 0.5s ease;
+}
+
+.is-scanning .camera-feed-mock {
+    filter: blur(0px) grayscale(0);
+}
+
+/* Cyberpunk Viewfinder Brackets */
+.vf-bracket {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: rgba(255, 255, 255, 0.5);
+    border-style: solid;
+    transition: all 0.3s;
+    z-index: 5;
+}
+
+.is-scanning .vf-bracket {
+    border-color: #00ffaa;
+    box-shadow: 0 0 10px #00ffaa inset, 0 0 10px #00ffaa;
+}
+
+.top-left {
+    top: 20px;
+    left: 20px;
+    border-width: 4px 0 0 4px;
+    border-radius: 12px 0 0 0;
+}
+
+.top-right {
+    top: 20px;
+    right: 20px;
+    border-width: 4px 4px 0 0;
+    border-radius: 0 12px 0 0;
+}
+
+.bottom-left {
+    bottom: 20px;
+    left: 20px;
+    border-width: 0 0 4px 4px;
+    border-radius: 0 0 0 12px;
+}
+
+.bottom-right {
+    bottom: 20px;
+    right: 20px;
+    border-width: 0 4px 4px 0;
+    border-radius: 0 0 12px 0;
+}
+
+/* The Scanning Laser Line */
+.scan-line {
+    position: absolute;
+    left: 5%;
+    width: 90%;
+    height: 3px;
+    background: #00ffaa;
+    box-shadow: 0 0 20px 5px rgba(0, 255, 170, 0.6), 0 0 10px white;
+    z-index: 10;
+    animation: scanAnimation 2s ease-in-out infinite alternate;
+}
+
+@keyframes scanAnimation {
+    0% {
+        top: 10%;
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        top: 90%;
+        opacity: 0;
+    }
+}
+
+/* Bottom Controls */
+.scanner-controls {
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.idle-state p {
+    color: #a0a0a0;
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.capture-target {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 4px solid white;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.capture-target:active {
+    transform: scale(0.9);
+}
+
+.capture-inner {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: white;
+}
+
+.scanning-state p {
+    color: #00ffaa;
+    font-size: 0.9rem;
+    margin-top: 8px;
+    opacity: 0.8;
+}
+
+.glitch-text {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 255, 170, 0.8);
+    position: relative;
+    animation: pulsate 1s infinite alternate;
+}
+
+@keyframes pulsate {
+    from {
+        opacity: 0.7;
+    }
+
+    to {
+        opacity: 1;
+        text-shadow: 0 0 20px rgba(0, 255, 170, 1);
+    }
+}
+
+/* Success State Card */
+.success-state {
+    width: 100%;
+}
+
+.result-card {
+    background: white;
+    color: #222;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 20px 40px rgba(0, 255, 170, 0.15);
+    text-align: left;
+}
+
+.result-header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.result-emoji {
+    font-size: 2.5rem;
+    background: #f4f4f5;
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-header h3 {
+    margin: 0 0 4px 0;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+
+.result-header p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #71717a;
+    line-height: 1.3;
+}
+
+.result-macros {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    background: #fafafa;
+    border-radius: 16px;
+    padding: 12px;
+}
+
+.rm-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rm-item span {
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+.rm-item label {
+    font-size: 0.7rem;
+    color: #a0a0a0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.mt-2 {
+    margin-top: 8px;
+}
+
+.w-100 {
+    width: 100%;
+}

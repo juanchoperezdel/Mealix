@@ -1,0 +1,231 @@
+.meal-matcher-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.meal-matcher-container {
+    background: #FFF;
+    width: 100%;
+    max-width: 400px;
+    height: 85vh;
+    border-radius: 32px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.2);
+}
+
+.matcher-header {
+    padding: 24px 24px 12px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    background: linear-gradient(to bottom, #FAFAFA, #FFF);
+}
+
+.matcher-subtitle {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #8E8E93;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.matcher-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0 0 8px 0;
+    color: #1C1C1E;
+}
+
+.matcher-macros-target {
+    font-size: 0.85rem;
+    color: #FF9500;
+    font-weight: 600;
+    background: rgba(255, 149, 0, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-flex;
+    gap: 8px;
+}
+
+.matcher-card-container {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.matcher-empty-state {
+    text-align: center;
+    color: #8E8E93;
+    padding: 2rem;
+}
+
+.matcher-empty-state h2 {
+    color: #1C1C1E;
+    margin-bottom: 0.5rem;
+}
+
+.swipe {
+    position: absolute;
+    width: calc(100% - 40px);
+    height: calc(100% - 40px);
+    max-width: 360px;
+    max-height: 480px;
+}
+
+.matcher-card {
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08), 0 4px 8px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.matcher-card-image {
+    flex: 1;
+    background: linear-gradient(135deg, #FFF0EC, #FFEAE0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.matcher-card-price-tag {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: #34C759;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(52, 199, 89, 0.3);
+}
+
+.matcher-card-content {
+    padding: 20px;
+    background: #FFF;
+}
+
+.matcher-card-content h2 {
+    margin: 0 0 8px 0;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #1C1C1E;
+}
+
+.matcher-card-content p {
+    margin: 0 0 16px 0;
+    font-size: 0.9rem;
+    color: #8E8E93;
+    line-height: 1.4;
+}
+
+.matcher-card-macros {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.macro-pill {
+    background: #F2F2F7;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    color: #1C1C1E;
+}
+
+.macro-pill strong {
+    font-weight: 800;
+}
+
+.matcher-badges {
+    display: flex;
+    gap: 12px;
+    font-size: 0.8rem;
+    color: #8E8E93;
+    font-weight: 500;
+}
+
+.matcher-controls {
+    padding: 16px 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.matcher-btn {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.matcher-btn:active {
+    transform: scale(0.9);
+}
+
+.matcher-btn.reject {
+    background: #FFF;
+    color: #FF3B30;
+    border: 1px solid rgba(255, 59, 48, 0.2);
+}
+
+.matcher-btn.accept {
+    background: #FFF;
+    color: #34C759;
+    border: 1px solid rgba(52, 199, 89, 0.2);
+}
+
+.swipe-instruction {
+    font-size: 0.8rem;
+    color: #C7C7CC;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.matcher-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    color: #8E8E93;
+}
